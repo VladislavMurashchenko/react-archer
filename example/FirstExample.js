@@ -21,6 +21,7 @@ const FirstExample = () => {
               targetId: 'element2',
               targetAnchor: 'top',
               sourceAnchor: 'bottom',
+              style: { arrowShape: 'rect' },
             }]}
           >
             <div style={boxStyle}>Root</div>
