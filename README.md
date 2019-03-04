@@ -1,4 +1,5 @@
 # react-archer
+This is a small extension for
 [![CircleCI](https://circleci.com/gh/pierpo/react-archer.svg?style=svg)](https://circleci.com/gh/pierpo/react-archer)
 
 🏹 Draw arrows between DOM elements in React 🖋
