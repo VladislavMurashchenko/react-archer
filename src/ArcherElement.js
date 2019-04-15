@@ -60,11 +60,15 @@ export class ArcherElementNoContext extends React.Component<InnerProps> {
   generateSourceToTarget = (relations: Array<RelationType>): Array<SourceToTargetType> => {
     const { id } = this.props;
 
-    return relations.map(({ targetId, sourceAnchor, targetAnchor, label, style }: RelationType) => ({
+    return relations.map(({ 
+      targetId, 
+      sourceAnchor, 
+      targetAnchor, 
+      ...rest
+    }: RelationType) => ({
       source: { id, anchor: sourceAnchor },
       target: { id: targetId, anchor: targetAnchor },
-      label,
-      style,
+      ...rest
     }));
   };
 

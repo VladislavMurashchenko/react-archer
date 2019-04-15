@@ -3,6 +3,7 @@
 import React from 'react';
 import Point from './Point';
 
+const CLICK_IMPRECISION_FACTOR = 10;
 type Props = {
   startingPoint: Point,
   startingAnchor: AnchorPositionType,
@@ -12,8 +13,10 @@ type Props = {
   arrowLength: number,
   strokeWidth: number,
   arrowLabel?: ?React$Node,
-  arrowShape: 'curve' | 'rect',
+  arrowShape?: 'curve' | 'rect',
   arrowMarkerId: string,
+  onClick?: (e: SyntheticEvent<HTMLElement>) => void,
+  onContextMenu?: (e: SyntheticEvent<HTMLElement>) => void,
 };
 
 function computeEndingArrowDirectionVector(endingAnchor) {
@@ -115,7 +118,6 @@ export function computeLabelDimensions(
 }
 
 function computeArrowPath(
-  arrowShape: string,
   xs: number,
   ys: number,
   xa1: number,
@@ -124,6 +126,7 @@ function computeArrowPath(
   ya2: number,
   xe: number,
   ye: number,
+  arrowShape?: string,
 ) {
   switch (arrowShape) {
     case 'rect':
@@ -144,6 +147,8 @@ const SvgArrow = ({
   arrowLabel,
   arrowMarkerId,
   arrowShape,
+  onClick,
+  onContextMenu,
 }: Props) => {
   const actualArrowLength = arrowLength * 2;
 
@@ -178,7 +183,6 @@ const SvgArrow = ({
   const { xa2, ya2 } = endingPosition;
 
   const pathString = computeArrowPath(
-    arrowShape,
     xs,
     ys,
     xa1,
@@ -186,7 +190,8 @@ const SvgArrow = ({
     xa2,
     ya2,
     xe,
-    ye
+    ye,
+    arrowShape,
   );
 
   const { xl, yl, wl, hl } = computeLabelDimensions(xs, ys, xe, ye);
@@ -213,6 +218,16 @@ const SvgArrow = ({
           </div>
         </foreignObject>
       )}
+      <path 
+        d={pathString}
+        style={{ 
+          fill: 'none', 
+          stroke: 'transparent', 
+          strokeWidth: strokeWidth + CLICK_IMPRECISION_FACTOR,
+        }}
+        onClick={onClick}
+        onContextMenu={onContextMenu}
+      />
     </g>
   );
 };

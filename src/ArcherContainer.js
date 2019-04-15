@@ -218,7 +218,14 @@ export class ArcherContainer extends React.Component<Props, State> {
   computeArrows = (): React$Node => {
     const parentCoordinates = this.getParentCoordinates();
 
-    return this.getSourceToTargets().map(({ source, target, label, style }: SourceToTargetType) => {
+    return this.getSourceToTargets().map(({ 
+      source, 
+      target, 
+      label, 
+      style,
+      onClick,
+      onContextMenu,
+    }: SourceToTargetType) => {
       const strokeColor =
         (style && style.strokeColor) || this.props.strokeColor;
 
@@ -262,6 +269,8 @@ export class ArcherContainer extends React.Component<Props, State> {
           arrowThickness={arrowThickness}
           arrowShape={arrowShape}
           arrowMarkerId={this.getMarkerId(source, target)}
+          onClick={onClick}
+          onContextMenu={onContextMenu}
         />
       );
     });
@@ -280,7 +289,12 @@ export class ArcherContainer extends React.Component<Props, State> {
    * a different color or size
    * */
   generateAllArrowMarkers = (): React$Node => {
-    return this.getSourceToTargets().map(({ source, target, label, style }: SourceToTargetType) => {
+    return this.getSourceToTargets().map(({ 
+      source, 
+      target, 
+      label, 
+      style,
+    }: SourceToTargetType, i, arr) => {
 
       const strokeColor =
         (style && style.strokeColor) || this.props.strokeColor;
@@ -305,7 +319,10 @@ export class ArcherContainer extends React.Component<Props, State> {
           orient="auto"
           markerUnits="strokeWidth"
         >
-          <path d={arrowPath} fill={strokeColor} />
+          <path 
+            d={arrowPath} 
+            fill={strokeColor} 
+          />
         </marker>
       );
     });

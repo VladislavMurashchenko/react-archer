@@ -22,6 +22,11 @@ const FirstExample = () => {
               targetAnchor: 'top',
               sourceAnchor: 'bottom',
               style: { arrowShape: 'rect' },
+              onClick: () => alert('click'),
+              onContextMenu: (e) => {
+                e.preventDefault();
+                alert('oncontextmenu');
+              },
             }]}
           >
             <div style={boxStyle}>Root</div>
@@ -37,6 +42,11 @@ const FirstExample = () => {
               sourceAnchor: 'right',
               style: { strokeColor: 'blue', strokeWidth: 1 },
               label: <div style={{ marginTop: '-20px' }}>Arrow 2</div>,
+              onClick: () => alert('click'),
+              onContextMenu: (e) => {
+                e.preventDefault();
+                alert('oncontextmenu');
+              },
             }]}
           >
             <div style={boxStyle}>Element 2</div>
@@ -53,6 +63,11 @@ const FirstExample = () => {
               targetAnchor: 'right',
               sourceAnchor: 'left',
               label: 'Arrow 3',
+              onClick: () => alert('click'),
+              onContextMenu: (e) => {
+                e.preventDefault();
+                alert('oncontextmenu');
+              },
             }]}
           >
             <div style={boxStyle}>Element 4</div>
