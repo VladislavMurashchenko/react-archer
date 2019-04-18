@@ -223,7 +223,6 @@ export class ArcherContainer extends React.Component<Props, State> {
       target, 
       label, 
       style,
-      className,
       onClick,
       onContextMenu,
     }: SourceToTargetType) => {
@@ -270,7 +269,6 @@ export class ArcherContainer extends React.Component<Props, State> {
           arrowThickness={arrowThickness}
           arrowShape={arrowShape}
           arrowMarkerId={this.getMarkerId(source, target)}
-          className={className}
           onClick={onClick}
           onContextMenu={onContextMenu}
         />
@@ -295,7 +293,6 @@ export class ArcherContainer extends React.Component<Props, State> {
       source, 
       target,
       style,
-      className,
     }: SourceToTargetType, i, arr) => {
 
       const strokeColor =
@@ -324,7 +321,6 @@ export class ArcherContainer extends React.Component<Props, State> {
           <path 
             d={arrowPath} 
             fill={strokeColor} 
-            className={className}
           />
         </marker>
       );
