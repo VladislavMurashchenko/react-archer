@@ -293,9 +293,9 @@ export class ArcherContainer extends React.Component<Props, State> {
   generateAllArrowMarkers = (): React$Node => {
     return this.getSourceToTargets().map(({ 
       source, 
-      target, 
-      label, 
+      target,
       style,
+      className,
     }: SourceToTargetType, i, arr) => {
 
       const strokeColor =
@@ -324,6 +324,7 @@ export class ArcherContainer extends React.Component<Props, State> {
           <path 
             d={arrowPath} 
             fill={strokeColor} 
+            className={className}
           />
         </marker>
       );
