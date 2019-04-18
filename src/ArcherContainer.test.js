@@ -33,6 +33,7 @@ describe('ArcherContainer', () => {
             anchor: 'bottom',
             id: 'second-element',
           },
+          zIndex: 0,
         },
       ],
     },

@@ -66,6 +66,11 @@ class SecondExample extends React.Component {
                           {i} {this.state.labels}
                         </div>
                       ),
+                      style: {
+                        strokeColor: i === 0 ? 'black' : 'red', 
+                      },
+                      className: 'arrow',
+                      zIndex: i === 0 ? 1 : 0,
                     },
                   ]}
                 >

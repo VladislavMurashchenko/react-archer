@@ -6,6 +6,8 @@ declare type RelationType = {
   sourceAnchor: AnchorPositionType,
   label?: ?React$Node,
   style?: ArrowStyleType,
+  className?: string,
+  zIndex?: number,
   onClick?: (e: SyntheticEvent<HTMLElement>) => void,
   onContextMenu?: (e: SyntheticEvent<HTMLElement>) => void,
 };
@@ -20,6 +22,8 @@ declare type SourceToTargetType = {
   target: EntityRelationType,
   label?: ?React$Node,
   style?: ArrowStyleType,
+  className?: string,
+  zIndex: number,
   onClick?: (e: SyntheticEvent<HTMLElement>) => void,
   onContextMenu?: (e: SyntheticEvent<HTMLElement>) => void,
 };

@@ -212,7 +212,7 @@ export class ArcherContainer extends React.Component<Props, State> {
     const jaggedSourceToTargets: JaggedSourceToTargetsArrayType = Object.keys(sourceToTargetsMap).map((key: string) => sourceToTargetsMap[key]);
 
     // Flatten
-    return [].concat.apply([], jaggedSourceToTargets);
+    return [].concat.apply([], jaggedSourceToTargets).sort((a, b) => a.zIndex - b.zIndex);
   };
 
   computeArrows = (): React$Node => {
@@ -223,6 +223,7 @@ export class ArcherContainer extends React.Component<Props, State> {
       target, 
       label, 
       style,
+      className,
       onClick,
       onContextMenu,
     }: SourceToTargetType) => {
@@ -269,6 +270,7 @@ export class ArcherContainer extends React.Component<Props, State> {
           arrowThickness={arrowThickness}
           arrowShape={arrowShape}
           arrowMarkerId={this.getMarkerId(source, target)}
+          className={className}
           onClick={onClick}
           onContextMenu={onContextMenu}
         />

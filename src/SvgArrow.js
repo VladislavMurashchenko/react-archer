@@ -15,6 +15,7 @@ type Props = {
   arrowLabel?: ?React$Node,
   arrowShape?: 'curve' | 'rect',
   arrowMarkerId: string,
+  className?: string,
   onClick?: (e: SyntheticEvent<HTMLElement>) => void,
   onContextMenu?: (e: SyntheticEvent<HTMLElement>) => void,
 };
@@ -147,6 +148,7 @@ const SvgArrow = ({
   arrowLabel,
   arrowMarkerId,
   arrowShape,
+  className,
   onClick,
   onContextMenu,
 }: Props) => {
@@ -200,6 +202,7 @@ const SvgArrow = ({
     <g>
       <path
         d={pathString}
+        className={className}
         style={{ fill: 'none', stroke: strokeColor, strokeWidth }}
         markerEnd={`url(${location.href}#${arrowMarkerId})`}
       />
@@ -220,6 +223,7 @@ const SvgArrow = ({
       )}
       <path 
         d={pathString}
+        className="react-archer__click-zone"
         style={{ 
           fill: 'none', 
           stroke: 'transparent', 

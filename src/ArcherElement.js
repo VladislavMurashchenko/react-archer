@@ -64,11 +64,21 @@ export class ArcherElementNoContext extends React.Component<InnerProps> {
       targetId, 
       sourceAnchor, 
       targetAnchor, 
-      ...rest
+      label,
+      style,
+      className,
+      zIndex,
+      onClick,
+      onContextMenu,
     }: RelationType) => ({
       source: { id, anchor: sourceAnchor },
       target: { id: targetId, anchor: targetAnchor },
-      ...rest
+      label,
+      style,
+      className,
+      zIndex: zIndex || 0,
+      onClick,
+      onContextMenu,
     }));
   };
 
